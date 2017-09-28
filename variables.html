@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="arr-result"></div><br>
+<div id="fun-result"></div><br>
+<input type="button" value="Function" onclick="sampleFunction()"><br>
+<div id="funb-result"></div><br>
+<input type="button" value="Double" onclick="execDouble()"><br>
+Class Code: <br>
+<input type="text" id="class"><br>
+<div id="comp-result"></div><br>
+<input type="button" value="Input Check" onclick="checkInput()"><br>
+<div id="loop-result"></div><br>
+<script>
+	//Variable Definition
+	var empty;
+	var string = "This is a String!";
+	var number = 7.16;
+	
+	empty = "not blank anymore!";
+	//Arrays
+	var studentNames = ["Ian", "Rudy", "Vicky", "Jon","Zach"];
+	var singleStudent = ["Jon","Lester", 26, studentNames];
+	
+	document.getElementById("arr-result").innerHTML = singleStudent;
+    // Functions
+	function sampleFunction(){
+		document.getElementById("fun-result").innerHTML = "Surpise " + empty;
+	}
+	function doubleNumber(a){
+		return a * 2;
+	}
+	function execDouble() {
+		number = doubleNumber(number);
+		document.getElementById("funb-result").innerHTML = number;
+	}
+	//Condition statement
+	function checkInput() {
+	var input = document.getElementById("class").value;
+	
+		if (input < 15 ) {
+			document.getElementById("comp-result").innerHTML = "Your Number needs to be a little bit bigger";
+		} else if (input >15 ){
+			document.getElementById("comp-result").innerHTML = "Your Number needs to be a little bit smaller";
+		} else {
+			document.getElementById("comp-result").innerHTML = "Bingo!";
+		}
+		
+	}
+	
+	//Loops
+	for (var i = 0; i < singleStudent.length; i++){
+	document.getElementById("loop-result").innerHTML += " " +singleStudent[i];
+	}
+</script>
+
+</body>
+</html>
