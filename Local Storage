@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Local Storage User Entered variables</h2>
+
+<div id="result"></div><br>
+
+
+<form>
+First name: <br>
+<input type="text" id="first"><br>
+Last name: <br>
+<input type="text" id="last"><br>
+Class Code: <br>
+<input type="text" id="class"><br>
+<br>
+<input type="button" value="Submit" onclick="submitRequest()">
+</form>
+
+<h2>Local Storage Array and Object</h2><br>
+<div id="output"></div><br>
+<input type="button" value="Lookup Requests" onclick="submitLookup()">
+<script>
+// Check browser support
+    // Store
+	var classes = [];
+	function submitRequest(){
+	localStorage.firstname = document.getElementById("first").value;
+	localStorage.lastname = document.getElementById("last").value;
+	localStorage.classCode = document.getElementById("class").value;
+	classes.push(localStorage.classCode);
+	document.getElementById("result").innerHTML = localStorage.firstname + " " + localStorage.lastname + " your request to be added to class " + localStorage.classCode + " has been submitted";
+	}
+	//Defaults
+    document.getElementById("result").innerHTML = "Please Enter the Required Information";
+	document.getElementById("output").innerHTML = "Push button to retrieve list of registration requests";
+	function submitLookup() {
+	var student = {lastName:localStorage.lastname, firstName:localStorage.firstname};
+	localStorage.studentInfo = JSON.stringify(student);
+	localStorage.reqisteredClasses = JSON.stringify(classes);
+	document.getElementById("output").innerHTML =  JSON.parse(localStorage.studentInfo).firstName + " "  + JSON.parse(localStorage.studentInfo).lastName + ", You have requested to be added to the following: " + JSON.parse(localStorage.reqisteredClasses);
+	}
+</script>
+
+</body>
+</html>
