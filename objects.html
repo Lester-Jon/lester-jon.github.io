@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Register as a New Student</h2>
+
+<div id="result"></div><br>
+<form>
+First name: <br>
+<input type="text" id="first"><br>
+Last name: <br>
+<input type="text" id="last"><br>
+Age: <br>
+<input type="text" id="age"><br>
+<br>
+<input type="button" value="Submit" onclick="newStudent()">
+</form>
+
+<h2>Submit registration request</h2><br>
+<div id="registerResult"></div><br>
+<form>
+Class Code:<br>
+<input type="text" id="class"><br>
+<input type="button" value="Submit Registeration" onclick="newRegistration()">
+</form>
+<script>
+// Object creation used for functions:
+function student(firstName, lastName, age, studentID, classesRegistered){
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.age = age;
+	this.studentID = studentID;
+	this.classesRegistered = classesRegistered;
+	this.register = function (a) {
+		if (classesRegistered.length >= 5){
+			document.getElementById("registerResult").innerHTML = "You are registered for too many classes!";
+		} else {
+			classesRegistered.push(a);
+			document.getElementById("registerResult").innerHTML = "Registration completed successfully!";
+		}
+	}
+}
+var student;	
+function newStudent(){
+	student = new student(document.getElementById("first").value,
+							 document.getElementById("last").value,
+							 document.getElementById("age").value,
+							 Math.floor((Math.random() * 200) + 1),
+							 []);
+	document.getElementById("result").innerHTML = "New Student registered with Student ID " + student.studentID;
+}
+
+function newRegistration(){
+	student.register(document.getElementById("class").value);
+}
+</script>
+
+</body>
+</html>
