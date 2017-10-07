@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Query Teacher Contact Info</h2>
+
+<div id="result"></div><br>
+<form>
+Class Code: <br>
+<input type="text" id="code"><br>
+<input type="button" value="Look Up" onclick="searchTeachers()">
+</form>
+<script>
+// Object creation used for functions:
+var cit261 = {"name":"Jon Lester", "phone":"111-111-1111", "email":"cit261@bui.edu","classCode":"cit261"};
+var cit360 = {"name":"Not Jon Lester", "phone":"None Listed","email":"Go Away!","classCode":"cit360"};
+
+var classes = [JSON.stringify(cit261), JSON.stringify(cit360)];
+
+function searchTeachers() {
+	for (var i = 0; i < classes.length; i++){
+		var parse = JSON.parse(classes[i]);
+		if (JSON.parse(classes[i]).classCode == document.getElementById("code").value){
+			var parse = JSON.parse(classes[i]);
+			document.getElementById("result").innerHTML = "Teachers Contact Info: " + parse.name + " " + parse.phone + " " + parse.email;
+			break;
+		} else
+			document.getElementById("result").innerHTML = "No Teacher Found";
+	} 
+		
+}
+
+</script>
+
+</body>
+</html>
