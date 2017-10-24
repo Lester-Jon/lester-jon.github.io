@@ -1,0 +1,22 @@
+[
+{
+"user": "jlester",
+"name": "Jon Lester",
+"class":"CIT261"
+},
+{
+"user": "alester",
+"name": "Andrew Lester",
+"class":"CIT353"
+},
+{
+"user": "rlester",
+"name": "Rob Lester",
+"class":"CIT380"
+},
+{
+"user": "klester",
+"name": "Kristin Lester",
+"class":"CIT336"
+}
+]
