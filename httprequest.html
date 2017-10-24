@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Enter Your User Name:</h2>
+<input type="text" id="user"><br>
+<div id="result"></div><br>
+<input type="button" value="Lookup User" onclick="lookupUser()">
+<script>
+function lookupUser(){
+	var request = new XMLHttpRequest();
+
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200){
+			var students = JSON.parse(this.responseText);
+			search(students);
+		}
+	};
+	xmlhttp.open("GET", "students.txt", true);
+	xmlhttp.send();
+}
+// a is array, b is String
+function search(a){
+	var result, i;
+	for (i=0; i < a.length; i++){
+		if (document.getElementById("user").value == a[i].name){
+			document.getElementById("result").innerHTML = "Name " + a[i].name + " is assigned to class" + a[i].className;
+		} else {
+			document.getElementById("result").innerHTML = "Username " + document.getElementById("user").value + " not found";
+		}
+	}
+}
+</script>
+
+</body>
+</html>
+
