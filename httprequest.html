@@ -10,14 +10,14 @@
 function lookupUser(){
 	var request = new XMLHttpRequest();
 
-	xmlhttp.onreadystatechange = function() {
+	request.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200){
 			var students = JSON.parse(this.responseText);
 			search(students);
 		}
 	};
-	xmlhttp.open("GET", "students.txt", true);
-	xmlhttp.send();
+	request.open("GET", "students.txt", true);
+	request.send();
 }
 // a is array, b is String
 function search(a){
