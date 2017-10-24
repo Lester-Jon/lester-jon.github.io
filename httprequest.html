@@ -23,7 +23,7 @@ function lookupUser(){
 function search(a){
 	var result, i;
 	for (i=0; i < a.length; i++){
-		if (document.getElementById("user").value == a[i].user){
+		if (document.getElementById("user").value.toLowerCase() == a[i].user){
 			document.getElementById("result").innerHTML = "Name " + a[i].name + " is assigned to class" + a[i].className;
 			break;	
 		} else {
