@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Pew Sound Effect</h2>
+
+<audio controls>
+  <source src="Pew_Pew.wav" type="audio/wav">
+  <source src="Pew_Pew.mp3" type="audio/mpeg">
+  We currently do not have an audio format that your browser supports.
+</audio></br>
+
+<h2> Waves Video</h2></br>
+<video width="320" height="240" controls>
+  <source src="waves.mp4" type="video/mp4">
+  We currently do not have a video format that your browser supports.
+</video></br>
+<h2> Canvas</h2></br>
+<canvas id="myCanvas"></canvas>
+
+<input type="button" value="ChangeShape" onclick="changeShape()">
+<input type="button" value="ChangeColor" onclick="changeColor()">
+<script>
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.fillStyle = "#FF0000";
+ctx.fillRect(0, 0, 80, 100);
+ctx.save();
+
+function changeShape() {
+	ctx.clearRect(0, 0, 80, 100);
+	ctx.fillStyle = "#FF0000";
+	ctx.fillRect(0, 0, 100, 80);
+}
+
+function changeColor() {
+	ctx.clearRect(0, 0, 80, 100);
+	ctx.fillStyle = "#2E86C1";
+	ctx.fillRect(0, 0, 100, 80);
+}
+
+</script>
+
+</body>
+</html>
