@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<style> 
+div {
+    width: 100px;
+    height: 100px;
+    background: yellow;
+    -webkit-transition: width 2s, height 8s, transform 3s; 
+    transition: width 2s, height 2s, transform 3s;
+	-webkit-animation-name: weird; 
+    -webkit-animation-duration: 4s;
+	-webkit-animation-iteration-count: infinite;
+    animation-name: weird;
+    animation-duration: 4s;
+	animation-iteration-count: infinite;
+}
+
+div:hover {
+    width: 300px;
+	height: 300px;
+	transform: rotate(480deg);
+}
+
+@-webkit-keyframes weird {
+    0% {background-color: yellow;}
+    50% {background-color: red;}
+	100% {background-color: yellow;}
+}
+
+@keyframes weird {
+    0% {background-color: yellow;}
+    50% {background-color: red;}
+	100% {background-color: yellow;}
+	
+}
+
+</style>
+<body>
+<div onmouseover="document.getElementById('dizzy').innerHTML='Oh boy, I am getting dizzy'"
+	 onmouseout="document.getElementById('dizzy').innerHTML='Never Again'" id="dizzy">Mouse over me</div></br>
+<span ontouchstart="document.getElementById('dizzy').innerHTML='Never Again'" id="touch">Touch me!</span>
+
+</body>
+</html>
