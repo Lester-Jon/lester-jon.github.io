@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Welcome User!</h2></br>
+<h1>Registered Classes</h1></br>
+
+<ul id="classes"><li>CIT260</li><li>CIT361</li></ul></br>
+<div id="result"></div></br>
+<form>
+Register for Class: <br>
+<input type="text" id="reg"><br>
+<input type="button" value="Register" onclick="register()">
+</form>
+<form>
+Remove Class: <br>
+<input type="text" id="rem"><br>
+<input type="button" value="Remove" onclick="remove()">
+</form></br>
+<script>
+function register() {
+	var ele = document.createElement("LI");
+	var code = document.createTextNode(document.getElementById("reg").value);
+	ele.appendChild(code);
+	document.getElementById("classes").appendChild(ele);
+	document.getElementById("result").innerHTML = "Add Successful!";
+}
+
+function remove() {
+	var total = document.getElementById("classes");
+	var i;
+	for (i = 0; i < document.getElementsByTagName("LI").length; i++){
+		if (document.getElementById("rem").value == document.getElementById("classes").childNodes[i].innerHTML){
+			total.removeChild(total.childNodes[i]);
+			document.getElementById("result").innerHTML = "Remove Successful!";
+		}
+
+	}
+}
+
+</script>
+</body>
+</html>
