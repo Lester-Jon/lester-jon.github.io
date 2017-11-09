@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Change Text Options</h1>
+<p id="ex">Example Text</p></br>
+
+Color: <select id="color">
+  <option value="blue">Blue</option>
+  <option value="yellow">Yellow</option>
+  <option value="red">Red</option>
+  <option value="green">Green</option>
+  <option value="black" selected >Black</option>
+</select></br>
+
+Font: <select id="font">
+  <option value="Arial">Arial</option>
+  <option value="Georgia">Georgia</option>
+  <option value="Verdana">Verdana</option>
+  <option value="Times New Roman" selected>Times New Roman</option>
+</select></br>
+ 
+Size: <select id="size">
+  <option value="small">Small</option>
+  <option value="medium" selected>Default</option>
+  <option value="large">Large</option>
+  <option value="x-large">Extra Large</option>
+</select></br>
+
+<input type="button" value="Submit" onclick="changeText()">
+<script>
+function changeText() {
+	document.getElementById("ex").style.fontSize = document.getElementById("size").value;
+	document.getElementById("ex").style.fontFamily = document.getElementById("font").value;
+	document.getElementById("ex").style.color = document.getElementById("color").value;
+}
+
+</script>
+</body>
+</html>
