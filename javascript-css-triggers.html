@@ -5,33 +5,38 @@ div {
     width: 100px;
     height: 100px;
     background: yellow;
-    -webkit-transition: width 2s, height 8s, transform 3s; 
-    transition: width 2s, height 2s, transform 3s;
-
 }
 
+
+.test {
+  -webkit-transition: 4s;
+  -moz-transition: 4s;
+  -ms-transition: 4s;
+  -o-transition: 4s;
+  transition: 4s;
+  margin-left: 50% !important;
+  width: 300px;
+  height: 300px;
+  animation-name: weird;
+  animation-duration: 4s;
+
+}
 
 @keyframes weird {
     0% {background-color: yellow;}
     50% {background-color: red;}
 	100% {background-color: yellow;}
 }
-
 </style>
 <body>
-<div id="dizzy"></div></br>
+<div id="test"></div></br>
 <button onclick="anim()">Animate</button>
-
 </body>
 <script>
 function anim() {
-document.getElementById("dizzy").style.animationName = "weird";
-document.getElementById("dizzy").style.animationDuration = "4s";
-document.getElementById("dizzy").style.animationIterationCount = "infinite";
-document.getElementById("dizzy").style.transition = "width 2s, height 2s, transform 3s";
-document.getElementById("dizzy").style.transform = "rotate(480deg)";
-document.getElementById("dizzy").style.width = "300px";
-document.getElementById("dizzy").style.height = "300px";
+
+document.getElementById('test').classList.add('test');
+
 }
 </script>
 </html>
