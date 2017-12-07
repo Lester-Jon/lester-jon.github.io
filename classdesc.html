@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+#desc {
+	transition-timing-function: ease-in;
+	-webkit-transition: .75s;
+    -moz-transition: .75s;
+    -ms-transition: .75s;
+    -o-transition: .75s;
+    transition: .75s;
+	border-style: solid;
+	bord-width: 5px;
+    }	
 <body>
 <div id="desc">
+<h2 id="desch2"></h2>
+<h4 id="desch4"></h4>
+<p id="descp" ontouchstart="loadDesc()"></p>
+<div id="selclass">
+<h5 id="selclassp"></h5>
 <select id="select">
 </select>
+</div>
 </div>
 
 <script>
 
-	var request = new XMLHttpRequest();
+var request = new XMLHttpRequest();
 	request.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200){
 			localStorage.classinfo = (this.responseText);
@@ -16,8 +34,8 @@
 	};
 	request.open("GET", "classes.txt", true);
 	request.send();
-  var length = (JSON.parse(localStorage.classinfo).length);
-  for (var i = 0; i < length; i++){
+ 
+  for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
 	var sel = document.getElementById("select");
 	var ele = document.createElement("option");
 	ele.text = JSON.parse(localStorage.classinfo)[i].classid;
@@ -25,7 +43,15 @@
 	sel.add(ele);
 	sel.style.display = "inline";
 	}
-  
+	
+  	function loadDesc(){
+		for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
+			if ( document.getElementById("select").value == JSON.parse(localStorage.classinfo)[i].classid ) {
+				document.getElementById("desch4").innerHTML = "Class: " + JSON.parse(localStorage.classinfo)[i].classid + " - " + JSON.parse(localStorage.classinfo)[i].title;
+				document.getElementById("descp").innerHTML = JSON.parse(localStorage.classinfo)[i].description;
+		break;
+			}
+		}
   </script>
   </body>
   </html>
