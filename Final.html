@@ -139,8 +139,8 @@ function begin() {
 	for (var i = 0; i < JSON.parse(localStorage.classinfo).length; i++){
 	var sel = document.getElementById("select");
 	var ele = document.createElement("option");
-	ele.text = JSON.parse(localStorage.classinfo)[i];
-	ele.value = JSON.parse(localStorage.classinfo)[i];
+	ele.text = JSON.parse(localStorage.classinfo)[i].classid;
+	ele.value = JSON.parse(localStorage.classinfo)[i].classid;
 	sel.add(ele);
 	sel.style.display = "inline";
 	}
