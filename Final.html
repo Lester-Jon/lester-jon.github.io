@@ -101,7 +101,7 @@ function begin() {
 	var request = new XMLHttpRequest();
 	request.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200){
-			localStorage.classinfo = JSON.stringify(this.responseText);
+			localStorage.classinfo = (this.responseText);
 		}
 	};
 	request.open("GET", "classes.txt", true);
