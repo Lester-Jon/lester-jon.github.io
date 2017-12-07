@@ -1,97 +1,97 @@
 [
 {
-"class":"CIT 110"
-"title":"Introduction to Excel"
+"classid":"CIT 110",
+"title":"Introduction to Excel",
 "description":"This course is an introduction to the use of spreadsheets in business. Emphasis is on learning spreadsheet literacy concepts and a popular spreadsheet application to solve business problems."
 },
 {
-"class":"CIT 111"
-"title":"Introduction to Databases"
+"classid":"CIT 111",
+"title":"Introduction to Databases",
 "description":"This course covers the basic elements of database management systems. It introduces students to the concepts of logical and physical relationships in a data model and the concepts of inner and outer joins. Students will use a computer aided software engineering (CASE) tool to design, create, and query a database."
 },
 {
-"class":"CIT 160"
-"title":"Introduction to Programming"
+"classid":"CIT 160",
+"title":"Introduction to Programming",
 "description":"This course is an introduction to the basic concepts of computers and information technology. Students will learn the basics of computer hardware and the binary and hexadecimal number systems, design algorithms to solve simple computing problems, and will write computer programs using Boolean logic, control structures, and functions."
 },
 {
-"class":"CIT 225"
-"title":"Database Design & Development"
+"classid":"CIT 225",
+"title":"Database Design & Development",
 "description":"The course deals with concepts and principles of database theory, application and management technologies. It focuses on the logical and physical database design and implementation. The course covers the use of UML semantic to describe Entity Relationship Designs (ERDs) and SQL to implement relationships between entities. SQL will be used to query and transact against a sample database."
 },
 {
-"class":"CIT 230"
-"title":"Web Frontend Development"
+"classid":"CIT 230",
+"title":"Web Frontend Development",
 "description":"This course focuses on the planning and development of web sites using HTML, CSS, JavaScript and PHP with attention to usability principles."
 },
 {
-"class":"CIT 240"
-"title":"Networking"
+"classid":"CIT 240",
+"title":"Networking",
 "description":"This course teaches general networking principles to provide an understanding of network fundamentals, LAN switching technologies, routing technologies, infrastructure services, and infrastructure maintenance.  The course corresponds to the Interconnecting Cisco Networking Devices Part 1 (ICDN1)"
 },
 {
-"class":"CIT 241"
-"title":"Network Design I"
+"classid":"CIT 241",
+"title":"Network Design I",
 "description":"This course teaches the principles of network standards and architectures that correspond to the Interconnecting Cisco Networking Devices Part 2 (ICND2) standard.  Students will learn the configuration and use of networking devices and protocols including LAN switching technologies, IPv4 and IPv6 routing technologies, WAN technologies, infrastructure services, and infrastructure maintenance."
 },
 {
-"class":"CIT 260"
-"title":"Object Oriented Programming"
+"classid":"CIT 260",
+"title":"Object Oriented Programming",
 "description":"In this course you will learn the basic concepts associated with Object-Oriented Programming, Java programming language, and how to design, develop and test real-world applications.  You apply what you have learned by designing, developing and testing a text based role playing game."
 },
 {
-"class":"CIT 261"
-"title":"Mobile Application Development"
+"classid":"CIT 261",
+"title":"Mobile Application Development",
 "description":"This course covers the basics of design, coding, and using HTM5L, CSS3, and JavaScript to produce Single Page Applications (SPAs) for mobile devices.  You will learn about some standard HTML5, CSS3, and JavaScript tools and functions you haven't seen before and see how they work.  With these tools in your belt you will have an opportunity to write SPAs that will run inside a web browser.  You will also learn about and be assessed on your professionalism."
 },
 {
-"class":"CIT 262"
-"title":"System Analysis and Design"
+"classid":"CIT 262",
+"title":"System Analysis and Design",
 "description":"This course teaches the concepts of systems analysis and design for those desiring to work in the field of information technology. Initially, an overview of an information system and the software development life cycle (SDLC) processes are covered. Then, each phase of the SDLC process is examined in depth, and real experience is gained through a project.  Computer aided software (CASE) tools will be used to design and document an information system/project."
 },
 {
-"class":"CIT 270"
-"title":"Systems Security I"
+"classid":"CIT 270",
+"title":"Systems Security I",
 "description":"The purpose of this course is to provide the student with an overview of the field of Information Security and Assurance.  Students will be exposed to the spectrum of Security activities, methods, methodologies, and procedures.  This course offers a comprehensive guide for anyone wishing to take the CompTIA Security SY0-401 Certification Exam.  It provides an introduction to the fundamentals of network security, including compliance and operational security; threats and vulnerabilities; application, data, and host security; access control and identity management; and cryptography.  The course covers new topics in network security as well, including psychological approaches to social engineering attacks, Web application attacks, penetration testing, data loss prevention, cloud computing security and application programming development security."
 },
 {
-"class":"CIT 325"
-"title":"Database Programming"
+"classid":"CIT 325",
+"title":"Database Programming",
 "description":"This course teaches the concepts of database programming.  It teaches how to write stored functions and procedures inside the database, how to use collections, how to use embedded objects, how to use transaction control mechanics, how to import large comma separated files, and large text files into a database.  It explores the uses of the database as a data repository for web-based applications."
 },
 {
-"class":"CIT 336"
-"title":"Web Backend Development"
+"classid":"CIT 336",
+"title":"Web Backend Development",
 "description":"This programming course focuses on constructing dynamic web sites using PHP with databases and design patterns.  The concepts introduced in the Web Frontend Development course are expected to be continued and implemented."
 },
 {
-"class":"CIT 352"
-"title":"Operating Systems I"
+"classid":"CIT 352",
+"title":"Operating Systems I",
 "description":"This course covers basic network operating system principals and Linux commands."
 },
 {
-"class":"CIT 353"
-"title":"Operating Systems II"
+"classid":"CIT 353",
+"title":"Operating Systems II",
 "description":"This course provides students with the administration skills to plan, install/configure, manage, and troubleshoot a Windows ServerEnvironment."
 },
 {
-"class":"CIT 360"
-"title":"Object-Oriented Software Develop"
+"classid":"CIT 360",
+"title":"Object-Oriented Software Develop",
 "description":"This course covers the basics of design, coding, and creating client-server applications. You will learn about some Android Java libraries and standard Java libraries you haven't seen before and see how they work. With these tools in your belt you will have an opportunity to write an Android client and standard Java Servlet that will run inside the Tomcat server. You will also learn about and be assessed on your professionalism."
 },
 {
-"class":"CIT 365"
-"title":".NET Software Development"
+"classid":"CIT 365",
+"title":".NET Software Development",
 "description":"This course leverages a student's fundamental software development and core web technology background with the Microsoft.NET framework with C# using the Visual Studio Integrated Development Environment.  Students will build upon a C# foundation using the ASP.NET framework to design and develop scalable, standards-based web sites, applications, and services using contemporary methodologies and established design patterns.  Team work and programming deliverables will be required."
 },
 {
-"class":"CIT 380"
-"title":"Project Management"
+"classid":"CIT 380",
+"title":"Project Management",
 "description":"This course introduces concepts, issues, approaches, tools, techniques, and technologies applicable to the management of projects.  Projects can be defined as any temporary endeavor undertaken to create unique product, service, or result. The course explores how a manager can plan, organize, implement and control non-routine activities to achieve cost, schedule and performance objectives."
 },
 {
-"class":"CIT 381"
-"title":"Business Intel and Analytics"
+"classid":"CIT 381",
+"title":"Business Intel and Analytics",
 "description":"This course provides an introduction to Business Intelligence, including the processes, methodologies, infrastructure, and current practices used to transform business data into useful information and support business decision-making and strategy. Business Intelligence requires foundational knowledge in data storage and retrieval, thus this course will review logical data models for both database management systems and data warehouses. Students will learn to extract and manipulate data from these systems and assess security-related issues. Data mining, visualization, and statistical analysis along with reporting options such as management dashboards are addressed.
 
 This course also provides an introduction to Analytics, or the automation of analysis, including an overview of qualitative and quantitative analysis methods and methods used to automate these processes for speed, interactivity, and quality (reliability and validity). Several examples of modern types of analytics will be introduced and explored such as descriptive, diagnostic, discovery, predictive, and prescriptive approaches.
@@ -99,13 +99,13 @@ This course also provides an introduction to Analytics, or the automation of ana
 Each semester we seek out opportunities to work with real world companies, organizations on campus, or public data to examine how they and/or we can more effectively leverage existing data and how to redesign their data flows to set up improved data analysis."
 },
 {
-"class":"CIT 490"
-"title":"Senior Project"
+"classid":"CIT 490",
+"title":"Senior Project",
 "description":"This course is designed to allow each student to design, build, and implement a project of their own choosing to further and accelerate individual learning and career goals.  Students will identify an area of interest and propose a project plan to pursue and achieve those goals primarily through analysis, design, development, testing, implementation, and maintenance activities in a variety of project management styles and formats or pursuit of and completion of professional-level and industry-recognized certifications.  Students will work with the faculty and mentors from professional industry for support and approval in achieving project objectives.  Students may work individually or within teams, but must be able to account for personal contributions and growth."
 },
 {
-"class":"CIT 495"
-"title":"Senior Practicum"
+"classid":"CIT 495",
+"title":"Senior Practicum",
 "description":"This is a capstone experience for the Computer Information Technology major. There are two options available: A research paper on a relevant Information Technology topic or participate in service learning. The purpose of this course is to build on the knowledge that students have learned in the Computer Information Technology major."
 }
 ]
