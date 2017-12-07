@@ -15,8 +15,8 @@
 	};
 	request.open("GET", "classes.txt", true);
 	request.send();
-  
-  for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
+  var length = (JSON.parse(localStorage.classinfo).length);
+  for (var i = 0; i < length; i++){
 	var sel = document.getElementById("select");
 	var ele = document.createElement("option");
 	ele.text = JSON.parse(localStorage.classinfo)[i].classid;
