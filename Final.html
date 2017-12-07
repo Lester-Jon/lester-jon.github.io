@@ -4,19 +4,152 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body {
-    font-family: "BYUI Open Sans", "Open Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, sans-serif ;
+    font-family: "Open Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, sans-serif ;
 }
 h1 {
     background-color: #056cb6 ;
-    color: white;
+    color: white ;
+	text-align: center ;
     }
-    
+
+.student {
+	transition-timing-function: ease-in;
+	background-color: #056cb6 ;
+    color: white ;
+	-webkit-transition: .75s;
+    -moz-transition: .75s;
+    -ms-transition: .75s;
+    -o-transition: .75s;
+    transition: .75s;  
+    }
+	
+.desc {
+	transition-timing-function: ease-in;
+	-webkit-transition: .75s;
+    -moz-transition: .75s;
+    -ms-transition: .75s;
+    -o-transition: .75s;
+    transition: .75s;
+	border-style: solid;
+	bord-width: 5px;
+    }		
+
+input {
+	position: relative;
+}
+
+.desch2 {
+	text-align: center;
+	margin-top: 2px;
+	margin-bottom: 4px;
+}
+
+#desch4 {
+	margin-top: 0px;
+	text-align: center;
+	margin-bottom: 4px;
+}
+
+#selclass {
+	text-align: center;
+}
+
+#select {
+	display: none;
+}
+
+#selclassp {
+	margin-bottom: 0px;
+}
+
 </style>
 </head>
 <body>
 
 <h1 id="header">Welcome to Mobile Student Scheduling</h1>
-<p>The media query will only apply if the media type is screen and the viewport is 480px wide or wider.</p>
+
+<div id="info">
+<p id="student"></p>
+<ul id="classes"></ul>
+</div>
+
+<div id="desc">
+<h2 id="desch2"></h2>
+<h4 id="desch4"></h4>
+<p id="descp"></p>
+<div id="selclass">
+<h5 id="selclassp"></h5>
+<select id="select">
+</select>
+</div>
+</div>
+
+<div style="text-align:center;">
+<div id="userdiv">Enter Username: <input type="text" id="user"><br></div>
+<input id="start" type="button" value="Click Here to Begin" onclick="begin()" />
+</div>
+
+<script>
+
+
+function begin() {
+//localStorage Variables
+	localStorage.user = document.getElementById("user").value;
+	localStorage.classes = JSON.stringify(["CIT261","CIT360"]) ;
+	
+	//AJAX request for class info to local storage
+	var request = new XMLHttpRequest();
+	request.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200){
+			localStorage.classinfo = JSON.stringify(this.responseText);
+		}
+	};
+	request.open("GET", "classes.txt", true);
+	request.send();
+	
+//Delete Objects Unused from Here"
+	var del = document.getElementById("start");
+	del.parentNode.removeChild(del);
+	var del1 = document.getElementById("userdiv");
+	del1.parentNode.removeChild(del1);
+//End Delete unused Objects
+	
+//Student Info Build
+	document.getElementById("student").innerHTML = "Welcome Student " + localStorage.user + "!<br>   You are currently Registered for:"; 
+	document.getElementById("info").classList.add("student");
+	
+	localStorage.classes = JSON.stringify(["CIT261","CIT360"]);
+	
+	for (var i = 0; i < JSON.parse(localStorage.classes).length; i++){
+	var ele = document.createElement("LI");
+	var code = document.createTextNode(JSON.parse(localStorage.classes)[i]);
+	ele.appendChild(code);
+	document.getElementById("classes").appendChild(ele);
+	}
+//End Student Info Build
+	
+	//Class Description Build
+	document.getElementById("desc").classList.add("desc");
+	document.getElementById("desch2").classList.add("desch2");
+	document.getElementById("desch2").innerHTML = "Class Descriptions";
+	document.getElementById("desch4").innerHTML = "Class: NOT CHOSEN";
+	document.getElementById("descp").innerHTML = "Tap here to load description of your selected class";
+	
+	document.getElementById("selclassp").innerHTML = "Select The class you which to preview";
+	for (var i = 0; i < JSON.parse(localStorage.classinfo).length; i++){
+	var sel = document.getElementById("select");
+	var ele = document.createElement("option");
+	ele.text = JSON.parse(localStorage.classinfo)[i];
+	ele.value = JSON.parse(localStorage.classinfo)[i];
+	sel.add(ele);
+	sel.style.display = "inline";
+	}
+	
+	return false;
+}
+
+</script>
+
 
 
 </body>
