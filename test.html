@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<select id="select">
+</select>
+
+<script>
+
+	var request = new XMLHttpRequest();
+	request.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200){
+			localStorage.classinfo = (this.responseText);
+		}
+	};
+	request.open("GET", "classes.txt", true);
+	request.send();
+  
+  for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
+	var sel = document.getElementById("select");
+	var ele = document.createElement("option");
+	ele.text = JSON.parse(localStorage.classinfo)[i].classid;
+	ele.value = JSON.parse(localStorage.classinfo)[i].classid;
+	sel.add(ele);
+	sel.style.display = "inline";
+	}
+  
+  </script>
+  </body>
+  </html>
