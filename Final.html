@@ -152,7 +152,7 @@ function begin() {
 function loadDisc(){
 	for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
 	if ( document.getElementById("select").value == JSON.parse(localStorage.classinfo)[i].classid ) {
-		document.getElementById("desch4").innerHTML = "Class: " + localStorage.classinfo)[i].classid + " - " + localStorage.classinfo)[i].title;
+		document.getElementById("desch4").innerHTML = "Class: " + JSON.parse(localStorage.classinfo)[i].classid + " - " + JSON.parse(localStorage.classinfo)[i].title;
 		document.getElementById("descp").innerHTML == JSON.parse(localStorage.classinfo)[i].description;
 		break;
 		}
