@@ -76,7 +76,7 @@ input {
 <div id="desc">
 <h2 id="desch2"></h2>
 <h4 id="desch4"></h4>
-<p id="descp"></p>
+<p id="descp" ontouchstart="loadDesc()"></p>
 <div id="selclass">
 <h5 id="selclassp"></h5>
 <select id="select">
@@ -136,7 +136,8 @@ function begin() {
 	document.getElementById("descp").innerHTML = "Tap here to load description of your selected class";
 	
 	document.getElementById("selclassp").innerHTML = "Select The class you which to preview";
-	for (var i = 0; i < JSON.parse(localStorage.classinfo).length; i++){
+	var length = (JSON.parse(localStorage.classinfo).length);
+	for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
 	var sel = document.getElementById("select");
 	var ele = document.createElement("option");
 	ele.text = JSON.parse(localStorage.classinfo)[i].classid;
@@ -148,9 +149,19 @@ function begin() {
 	return false;
 }
 
+function loadDisc(){
+	for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
+	if ( document.getElementById("select").value == JSON.parse(localStorage.classinfo)[i].classid {
+		document.getElementById("desch4").innerHTML = "Class: " + localStorage.classinfo)[i].classid + " - " + localStorage.classinfo)[i].title;
+		document.getElementById("descp").innerHTML == JSON.parse(localStorage.classinfo)[i].description;
+		break;
+		}
+	
+	}
+
+
+}
+
 </script>
-
-
-
 </body>
 </html>
