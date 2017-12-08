@@ -32,7 +32,7 @@ h1 {
     transition: .75s;
 	border-style: solid;
 	bord-width: 5px;
-	animation-duration: .5s;
+	animation-duration: .3s;
 	animation-iteration-count: 1;
     }		
 
@@ -170,7 +170,7 @@ function begin() {
 				document.getElementById("desch4").innerHTML = "Class: " + JSON.parse(localStorage.classinfo)[i].classid + " - " + JSON.parse(localStorage.classinfo)[i].title;
 				document.getElementById("descp").innerHTML = JSON.parse(localStorage.classinfo)[i].description;
 				document.getElementById("desc").style.animationName = "success";
-				document.getElementById("desc").style.animationName = "";
+				setTimeout(function(){document.getElementById("desc").style.animationName = ""; }, 500);
 		break;
 			}
 		}
