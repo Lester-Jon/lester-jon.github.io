@@ -41,12 +41,16 @@ input {
 }
 
 .desch2 {
+	background-color: #056cb6 ;
+    color: white ;
 	text-align: center;
 	margin-top: 2px;
 	margin-bottom: 4px;
 }
 
 #desch4 {
+	background-color: #056cb6 ;
+    color: white ;
 	margin-top: 0px;
 	text-align: center;
 	margin-bottom: 4px;
@@ -126,6 +130,7 @@ function begin() {
 	request.open("GET", "classes.txt", true);
 	request.send();
 	
+	
 //Delete Objects Unused from Here"
 	var del = document.getElementById("start");
 	del.parentNode.removeChild(del);
@@ -173,6 +178,7 @@ function begin() {
 
 //Class Description Loader
 	function loadDesc(){
+	if (localStorage.lastDesc != document.getElementById("select").value) {
 		for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
 			if ( document.getElementById("select").value == JSON.parse(localStorage.classinfo)[i].classid ) {
 				document.getElementById("desch4").innerHTML = "Class: " + JSON.parse(localStorage.classinfo)[i].classid + " - " + JSON.parse(localStorage.classinfo)[i].title;
@@ -182,10 +188,11 @@ function begin() {
 		break;
 			}
 		}
-//End Class Description Loader
-
+	}
+	//Variable to prevent the looping of animation
+	localStorage.lastDesc = document.getElementById("select").value;
 }
-
+//End Class Description Loader
 </script>
 </body>
 </html>
