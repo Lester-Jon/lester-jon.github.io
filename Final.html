@@ -150,7 +150,7 @@ input {
 <h5 id="addclassp"></h5>
 <select id="addselect">
 </select>
-<input id="register" type="button" value="Click Here to Register" onclick="addClass()"/><br>
+<br><input id="register" type="button" value="Click Here to Register" onclick="addClass()"/>
 </div>
 </div>
 
@@ -198,7 +198,6 @@ function begin() {
 	document.getElementById("student").innerHTML = "Welcome Student " + localStorage.user + "!<br>   You are currently Registered for:"; 
 	document.getElementById("info").classList.add("student");
 	
-	localStorage.classes = JSON.stringify(["CIT261","CIT360"]);
 	
 	for (var i = 0; i < JSON.parse(localStorage.classes).length; i++){
 	var ele = document.createElement("LI");
@@ -297,7 +296,7 @@ function begin() {
 			ele.appendChild(code);
 			document.getElementById("classes").appendChild(ele);
 			//Add to localStorage
-			JSON.parse(localStorage.classes).push(document.getElementById("addselect").value);
+			localStorage.classes =  JSON.stringify(JSON.parse(localStorage.classes).push(document.getElementById("addselect").value));
 			//Animation
 			document.getElementById("add").style.animationName = "success";
 			setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
