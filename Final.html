@@ -34,7 +34,7 @@ h1 {
 	bord-width: 5px;
 	animation-duration: .3s;
 	animation-iteration-count: 1;
-	margin-bottom: 6px;
+	margin-bottom: 8px;
     }		
 
 input {
@@ -269,14 +269,17 @@ function begin() {
 	//Successful code
 		if (failure == 0) {
 		//Add to List at top of web page
-		var addele = document.createElement("LI");
-		var addcode = document.createTextNode(document.getElementById("addselect").value);
-		addele.appendChild(code);
-		document.getElementById("classes").appendChild(addele);
+		var ele = document.createElement("LI");
+		var code = document.createTextNode(document.getElementById("addselect").value);
+		ele.appendChild(code);
+		document.getElementById("classes").appendChild(ele);
 		//Add to localStorage
 		JSON.parse(localStorage.classes).push(document.getElementById("addselect").value);
 		//Animation
 		document.getElementById("add").style.animationName = "success";
+		setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
+		//Transform Student
+		document.getElementById("info").style.transform = "rotateY(360deg)";
 		setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
 		}
 		
