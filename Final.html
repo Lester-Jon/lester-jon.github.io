@@ -20,7 +20,9 @@ h1 {
     -moz-transition: .75s;
     -ms-transition: .75s;
     -o-transition: .75s;
-    transition: .75s;  
+    transition: .75s;
+	animation-duration: .3s;
+	animation-iteration-count: 1;
     }
 	
 .desc {
@@ -108,7 +110,16 @@ input {
 }
 #addp {
 	text-align: center;
+	margin-bottom: 0px;
 }
+
+@-webkit-keyframes rotate {
+	50% {transform: rotateY(360deg);}
+}
+@keyframes rotate {
+	50% {transform: rotateY(360deg);}
+}
+
 
 </style>
 </head>
@@ -139,7 +150,7 @@ input {
 <h5 id="addclassp"></h5>
 <select id="addselect">
 </select>
-<br><input id="register" type="button" value="Click Here to Register" onclick="addClass()"/>
+<input id="register" type="button" value="Click Here to Register" onclick="addClass()"/><br>
 </div>
 </div>
 
@@ -260,14 +271,24 @@ function begin() {
 			if ( document.getElementById("addselect").value == JSON.parse(localStorage.taken)[i]) {
 				document.getElementById("add").style.animationName = "failure";
 				setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
-				document.getElementById("addp").innerHTML = "You have already taken " + document.getElementById("addselect").value;
+				document.getElementById("addp").innerHTML = "You have already taken </br>" + document.getElementById("addselect").value;
 				failure = 1;
 				break;
 			}
 		}
 	//End check for retakes
+	//Checks for already registered
+		for (var i = 0; i < (JSON.parse(localStorage.classes).length); i++){
+			if ( document.getElementById("addselect").value == JSON.parse(localStorage.classes)[i]) {
+				document.getElementById("add").style.animationName = "failure";
+				setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
+				document.getElementById("addp").innerHTML = "You are already registered for: </br> " + document.getElementById("addselect").value;
+				failure = 1;
+				break;
+			}
+
 	//Successful code
-		if (failure == 0) {
+	if (failure == 0) {				
 		document.getElementById("addp").innerHTML = "You have successfully registered for: </br> " + document.getElementById("addselect").value;
 		//Add to List at top of web page
 		var ele = document.createElement("LI");
@@ -280,11 +301,8 @@ function begin() {
 		document.getElementById("add").style.animationName = "success";
 		setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
 		//Transform Student
-		document.getElementById("info").style.transform = "rotateY(360deg)";
-		setTimeout(function(){document.getElementById("add").style.transform = "" }, 500);
-		}
-		
-	
+		document.getElementById("info").style.animationName = "rotate";
+		setTimeout(function(){document.getElementById("info").style.animationName = "" }, 500);			
 	}
 
 //End Class Registerer
