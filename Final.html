@@ -106,6 +106,9 @@ input {
 #addclass {
 	text-align: center;
 }
+#addp {
+	text-align: center;
+}
 
 </style>
 </head>
@@ -268,8 +271,8 @@ function begin() {
 		//Add to List at top of web page
 		var addele = document.createElement("LI");
 		var addcode = document.createTextNode(document.getElementById("addselect").value);
-		ele.appendChild(code);
-		document.getElementById("classes").appendChild(ele);
+		addele.appendChild(code);
+		document.getElementById("classes").appendChild(addele);
 		//Add to localStorage
 		JSON.parse(localStorage.classes).push(document.getElementById("addselect").value);
 		//Animation
