@@ -124,7 +124,7 @@ input {
 <div id="addclass">
 <h5 id="addclassp"></h5>
 <select id="addselect">
-</select>
+</select></br>
 <input id="register" type="button" value="Click Here to Register" onclick="addClass()"/>
 </div>
 </div>
@@ -152,14 +152,14 @@ function begin() {
 	request.open("GET", "classes.txt", true);
 	request.send();
 	//AJAX request for classes taken info to local storage
-	var request = new XMLHttpRequest();
-	request.onreadystatechange = function() {
+	var request2 = new XMLHttpRequest();
+	request2.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200){
 			localStorage.classinfo = (this.responseText);
 		}
 	};
-	request.open("GET", "taken.txt", true);
-	request.send();
+	request2.open("GET", "taken.txt", true);
+	request2.send();
 	
 //Delete Objects Unused from Here"
 	var del = document.getElementById("start");
@@ -239,6 +239,7 @@ function begin() {
 
 //Class Registerer
 	function addClass() {
+	
 	
 	
 	
