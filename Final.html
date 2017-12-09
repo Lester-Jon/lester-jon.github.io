@@ -289,15 +289,14 @@ function begin() {
 
 	//Successful code
 		if (failure == 0) {				
-			document.getElementById("addp").innerHTML = "You have successfully registered for: </br> " + document.getElementById("addselect").value;
+			document.getElementById("addp").innerHTML =  JSON.parse(localStorage)[2]; //"You have successfully registered for: </br> " + document.getElementById("addselect").value;
 			//Add to List at top of web page
 			var ele = document.createElement("LI");
 			var code = document.createTextNode(document.getElementById("addselect").value);
 			ele.appendChild(code);
 			document.getElementById("classes").appendChild(ele);
 			//Add to localStorage
-			var temp = JSON.parse(localStorage.classes).push(document.getElementById("addselect").value);
-			localStorage.classes =  JSON.stringify(temp);
+			localStorage.classes =  JSON.stringify(JSON.parse(localStorage.classes).push(document.getElementById("addselect").value));
 			//Animation
 			document.getElementById("add").style.animationName = "success";
 			setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
