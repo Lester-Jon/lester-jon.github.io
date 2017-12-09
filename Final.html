@@ -151,11 +151,12 @@ function begin() {
 	};
 	request.open("GET", "classes.txt", true);
 	request.send();
+	
 	//AJAX request for classes taken info to local storage
 	var request2 = new XMLHttpRequest();
 	request2.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200){
-			localStorage.classinfo = (this.responseText);
+			localStorage.taken = (this.responseText);
 		}
 	};
 	request2.open("GET", "taken.txt", true);
