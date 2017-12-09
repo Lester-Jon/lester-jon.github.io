@@ -289,7 +289,7 @@ function begin() {
 
 	//Successful code
 		if (failure == 0) {				
-			document.getElementById("addp").innerHTML =  JSON.parse(localStorage)[2]; //"You have successfully registered for: </br> " + document.getElementById("addselect").value;
+			//document.getElementById("addp").innerHTML = "You have successfully registered for: </br> " + document.getElementById("addselect").value;
 			//Add to List at top of web page
 			var ele = document.createElement("LI");
 			var code = document.createTextNode(document.getElementById("addselect").value);
@@ -302,7 +302,8 @@ function begin() {
 			setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
 			//Transform Student
 			document.getElementById("info").style.animationName = "rotate";
-			setTimeout(function(){document.getElementById("info").style.animationName = "" }, 500);			
+			setTimeout(function(){document.getElementById("info").style.animationName = "" }, 500);
+			document.getElementById("addp").innerHTML =  JSON.parse(localStorage)[2];			
 		}
 	}	
 //End Class Registerer
