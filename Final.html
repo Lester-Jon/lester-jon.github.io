@@ -298,7 +298,7 @@ function begin() {
 			//Add to localStorage
 			//var temp = JSON.parse(localStorage.classes);
 			//temp.push(document.getElementById("addselect").value);
-			localStorage.classes =  JSON.stringify(JSON.parse(localStorage.classes).push(document.getElementById("addselect").value));
+			localStorage.classes =  JSON.stringify(JSON.parse(localStorage.classes).push(document.getElementById("addselect").value););
 			//Animation
 			document.getElementById("add").style.animationName = "success";
 			setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
