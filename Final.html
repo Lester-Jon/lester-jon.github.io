@@ -265,7 +265,7 @@ function begin() {
 
 //Class Registerer
 	function addClass() {
-	var failure = 0;
+		var failure = 0;
 	//Check for Retakes
 		for (var i = 0; i < (JSON.parse(localStorage.taken).length); i++){
 			if ( document.getElementById("addselect").value == JSON.parse(localStorage.taken)[i]) {
@@ -289,23 +289,23 @@ function begin() {
 		}
 
 	//Successful code
-	if (failure == 0) {				
-		document.getElementById("addp").innerHTML = "You have successfully registered for: </br> " + document.getElementById("addselect").value;
-		//Add to List at top of web page
-		var ele = document.createElement("LI");
-		var code = document.createTextNode(document.getElementById("addselect").value);
-		ele.appendChild(code);
-		document.getElementById("classes").appendChild(ele);
-		//Add to localStorage
-		JSON.parse(localStorage.classes).push(document.getElementById("addselect").value);
-		//Animation
-		document.getElementById("add").style.animationName = "success";
-		setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
-		//Transform Student
-		document.getElementById("info").style.animationName = "rotate";
-		setTimeout(function(){document.getElementById("info").style.animationName = "" }, 500);			
-	}
-
+		if (failure == 0) {				
+			document.getElementById("addp").innerHTML = "You have successfully registered for: </br> " + document.getElementById("addselect").value;
+			//Add to List at top of web page
+			var ele = document.createElement("LI");
+			var code = document.createTextNode(document.getElementById("addselect").value);
+			ele.appendChild(code);
+			document.getElementById("classes").appendChild(ele);
+			//Add to localStorage
+			JSON.parse(localStorage.classes).push(document.getElementById("addselect").value);
+			//Animation
+			document.getElementById("add").style.animationName = "success";
+			setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
+			//Transform Student
+			document.getElementById("info").style.animationName = "rotate";
+			setTimeout(function(){document.getElementById("info").style.animationName = "" }, 500);			
+		}
+	}	
 //End Class Registerer
 </script>
 </body>
