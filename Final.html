@@ -84,6 +84,17 @@ input {
 	100% {background-color: white;}
 }
 
+@-webkit-keyframes failure {
+    0% {background-color: white;}
+    50% {background-color: red;}
+	100% {background-color: white;}
+}
+@keyframes failure {
+    0% {background-color: white;}
+    50% {background-color: red;}
+	100% {background-color: white;}
+}
+
 #addselect {
 	display: none;
 }
@@ -240,9 +251,32 @@ function begin() {
 
 //Class Registerer
 	function addClass() {
-	
-	
-	
+	var failure = 0;
+	//Check for Retakes
+		for (var i = 0; i < (JSON.parse(localStorage.taken).length); i++){
+			if ( document.getElementById("addselect").value == JSON.parse(localStorage.taken)[i]) {
+				document.getElementById("add").style.animationName = "failure";
+				setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
+				document.getElementById("addp").innerHTML = "You have already taken " + document.getElementById("addselect").value;
+				failure = 1;
+				break;
+			}
+		}
+	//End check for retakes
+	//Successful code
+		if (failure == 0) {
+		//Add to List at top of web page
+		var addele = document.createElement("LI");
+		var addcode = document.createTextNode(document.getElementById("addselect").value);
+		ele.appendChild(code);
+		document.getElementById("classes").appendChild(ele);
+		//Add to localStorage
+		JSON.parse(localStorage.classes).push(document.getElementById("addselect").value);
+		//Animation
+		document.getElementById("add").style.animationName = "success";
+		setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
+		}
+		
 	
 	}
 
