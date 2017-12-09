@@ -87,6 +87,11 @@ input {
 	display: none;
 }
 
+#register {
+	display: none;
+}
+
+
 </style>
 </head>
 <body>
@@ -117,7 +122,7 @@ input {
 <select id="addselect">
 </select>
 </div>
-<input id="start" type="button" value="Click Here to Register" onclick="addClass()" />
+<input id="register" type="button" value="Click Here to Register" onclick="addClass()"/>
 </div>
 
 <div style="text-align:center;">
@@ -189,11 +194,12 @@ function begin() {
 	sel.add(ele);
 	sel.style.display = "inline";
 	}
+	document.getElementById("register").style.display = "inline";
 //End Class Description Build
 //Add Class Build
 	document.getElementById("add").classList.add("desc");
 	document.getElementById("addh2").classList.add("secHeader");
-	document.getElementById("addh2").classList.innerHTML = "Register for a Class";
+	document.getElementById("addh2").innerHTML = "Register for a Class";
 	document.getElementById("addclassp").innerHTML = "Select the class you wish to add";
 	for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
 	var sel = document.getElementById("addselect");
@@ -203,7 +209,7 @@ function begin() {
 	sel.add(ele);
 	sel.style.display = "inline";
 	}
-
+	document.getElementById("register").style.display = "inline";
 //End Class Build
 
 	return false;
