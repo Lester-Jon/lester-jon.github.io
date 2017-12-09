@@ -40,7 +40,7 @@ input {
 	position: relative;
 }
 
-.desch2 {
+.secHeader {
 	background-color: #056cb6 ;
     color: white ;
 	text-align: center;
@@ -56,6 +56,8 @@ input {
 	margin-top: 0px;
 	text-align: center;
 	margin-bottom: 4px;
+	margin-left: -3px;
+	margin-right: -3px;
 }
 
 #selclass {
@@ -107,9 +109,9 @@ input {
 <div id="add">
 <h2 id="addh2"></h2>
 <p id="addp"></p>
-<div id="selclass">
-<h5 id="selclassp"></h5>
-<select id="select">
+<div id="addclass">
+<h5 id="addclassp"></h5>
+<select id="addselect">
 </select>
 </div>
 </div>
@@ -127,7 +129,7 @@ function begin() {
 	localStorage.user = document.getElementById("user").value;
 	localStorage.classes = JSON.stringify(["CIT261","CIT360"]) ;
 	
-	//AJAX request for class info to local storage
+	//AJAX request for class description info to local storage
 	var request = new XMLHttpRequest();
 	request.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200){
@@ -136,7 +138,15 @@ function begin() {
 	};
 	request.open("GET", "classes.txt", true);
 	request.send();
-	
+	//AJAX request for classes taken info to local storage
+	var request = new XMLHttpRequest();
+	request.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200){
+			localStorage.classinfo = (this.responseText);
+		}
+	};
+	request.open("GET", "taken.txt", true);
+	request.send();
 	
 //Delete Objects Unused from Here"
 	var del = document.getElementById("start");
@@ -161,13 +171,12 @@ function begin() {
 	
 //Class Description Build
 	document.getElementById("desc").classList.add("desc");
-	document.getElementById("desch2").classList.add("desch2");
+	document.getElementById("desch2").classList.add("secHeader");
 	document.getElementById("desch2").innerHTML = "Class Descriptions";
 	document.getElementById("desch4").innerHTML = "Class: NOT CHOSEN";
 	document.getElementById("descp").innerHTML = "Tap here to load description of your selected class";
 	
-	document.getElementById("selclassp").innerHTML = "Select The class you which to preview";
-	var length = (JSON.parse(localStorage.classinfo).length);
+	document.getElementById("selclassp").innerHTML = "Select the class you wish to preview";
 	for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
 	var sel = document.getElementById("select");
 	var ele = document.createElement("option");
@@ -178,7 +187,19 @@ function begin() {
 	}
 //End Class Description Build
 //Add Class Build
+	document.getElementById("addh2").classList.add("secHeader");
+	document.getElementById("addh2").classList.innerHTML = "Register for a Class";
+	document.getElementById("addclassp").innerHTML = "Select the class you wish to add";
+	for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
+	var sel = document.getElementById("addselect");
+	var ele = document.createElement("option");
+	ele.text = JSON.parse(localStorage.classinfo)[i].classid;
+	ele.value = JSON.parse(localStorage.classinfo)[i].classid;
+	sel.add(ele);
+	sel.style.display = "inline";
+	}
 
+//End Class Build
 
 	return false;
 }
@@ -200,6 +221,15 @@ function begin() {
 	localStorage.lastDesc = document.getElementById("select").value;
 }
 //End Class Description Loader
+
+//Class Registerer
+	function addClass() {
+	
+	
+	
+	}
+
+//End Class Registerer
 </script>
 </body>
 </html>
