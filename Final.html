@@ -138,8 +138,8 @@ input {
 <div id="addclass">
 <h5 id="addclassp"></h5>
 <select id="addselect">
-</select></br>
-<input id="register" type="button" value="Click Here to Register" onclick="addClass()"/>
+</select>
+<br><input id="register" type="button" value="Click Here to Register" onclick="addClass()"/>
 </div>
 </div>
 
@@ -154,7 +154,7 @@ input {
 function begin() {
 //localStorage Variables
 	localStorage.user = document.getElementById("user").value;
-	localStorage.classes = JSON.stringify(["CIT261","CIT360"]) ;
+	localStorage.classes = JSON.stringify(["CIT 261","CIT 360"]) ;
 	
 	//AJAX request for class description info to local storage
 	var request = new XMLHttpRequest();
@@ -268,6 +268,7 @@ function begin() {
 	//End check for retakes
 	//Successful code
 		if (failure == 0) {
+		document.getElementById("addp").innerHTML = "You have successfully registered for: </br> " + document.getElementById("addselect").value;
 		//Add to List at top of web page
 		var ele = document.createElement("LI");
 		var code = document.createTextNode(document.getElementById("addselect").value);
@@ -280,7 +281,7 @@ function begin() {
 		setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
 		//Transform Student
 		document.getElementById("info").style.transform = "rotateY(360deg)";
-		setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
+		setTimeout(function(){document.getElementById("add").style.transform = "" }, 500);
 		}
 		
 	
