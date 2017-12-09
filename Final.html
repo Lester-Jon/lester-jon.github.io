@@ -296,7 +296,7 @@ function begin() {
 			ele.appendChild(code);
 			document.getElementById("classes").appendChild(ele);
 			//Add to localStorage
-			localStorage.classes =  JSON.stringify(JSON.parse(localStorage.classes).push(document.getElementById("addselect").value));
+			localStorage.classes =  JSON.stringify((JSON.parse(localStorage.classes)).push(document.getElementById("addselect").value));
 			//Animation
 			document.getElementById("add").style.animationName = "success";
 			setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
