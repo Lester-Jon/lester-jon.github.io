@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -155,6 +154,17 @@ input {
 </div>
 </div>
 
+<div id="rem">
+<h2 id="remh2"></h2>
+<p id="remp"></p>
+<div id="remclass">
+<h5 id="remclassp"></h5>
+<select id="remselect">
+</select>
+<br><input id="remove" type="button" value="Click Here to Remove" onclick="remClass()"/>
+</div>
+</div>
+
 <div style="text-align:center;">
 <div id="userdiv">Enter Username: <input type="text" id="user"><br></div>
 <input id="start" type="button" value="Click Here to Begin" onclick="begin()" />
@@ -216,7 +226,7 @@ function begin() {
 	document.getElementById("descp").innerHTML = "Tap here to load description of your selected class";
 	
 	document.getElementById("selclassp").innerHTML = "Select the class you wish to preview";
-	//Set timeout because localstorage variable wasn't fully initialized by the time we attempted to run it
+	//Set timeout because localstorage variable wasn't fully initialized by the time we attempted to run this
 	setTimeout(function(){ for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
 	var sel = document.getElementById("select");
 	var ele = document.createElement("option");
@@ -252,7 +262,7 @@ function begin() {
 		for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
 			if ( document.getElementById("select").value == JSON.parse(localStorage.classinfo)[i].classid ) {
 				document.getElementById("desch4").innerHTML = "Class: " + JSON.parse(localStorage.classinfo)[i].classid + " - " + JSON.parse(localStorage.classinfo)[i].title;
-				document.getElementById("descp").innerHTML = JSON.parse(localStorage.classinfo)[i].description;
+				document.getElementById("descp").innerHTML = JSON.parse(localStorage.classinfo)[i].description + " </br> Tap again to Load a New Class Description";
 				document.getElementById("desc").style.animationName = "success";
 				setTimeout(function(){document.getElementById("desc").style.animationName = ""; }, 500);
 		break;
@@ -291,7 +301,7 @@ function begin() {
 
 	//Successful code
 		if (failure == 0) {				
-			//document.getElementById("addp").innerHTML = "You have successfully registered for: </br> " + document.getElementById("addselect").value;
+			document.getElementById("addp").innerHTML = "You have successfully registered for: </br> " + document.getElementById("addselect").value + " </br> Feel Free to Add Another Class";
 			//Add to List at top of web page
 			var ele = document.createElement("LI");
 			var code = document.createTextNode(document.getElementById("addselect").value);
@@ -306,11 +316,17 @@ function begin() {
 			setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
 			//Transform Student
 			document.getElementById("info").style.animationName = "rotate";
-			setTimeout(function(){document.getElementById("info").style.animationName = "" }, 500);
-			document.getElementById("addp").innerHTML =  JSON.parse(localStorage.classes)[0];			
+			setTimeout(function(){document.getElementById("info").style.animationName = "" }, 500);		
 		}
 	}	
 //End Class Registerer
+//Class Remover
+	function remClass() {
+	
+	}
+
+
+//End Class Remover
 </script>
 </body>
 </html>
