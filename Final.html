@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -215,14 +216,15 @@ function begin() {
 	document.getElementById("descp").innerHTML = "Tap here to load description of your selected class";
 	
 	document.getElementById("selclassp").innerHTML = "Select the class you wish to preview";
-	for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
+	//happening too fast
+	setTimeout(function(){ for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
 	var sel = document.getElementById("select");
 	var ele = document.createElement("option");
 	ele.text = JSON.parse(localStorage.classinfo)[i].classid;
 	ele.value = JSON.parse(localStorage.classinfo)[i].classid;
 	sel.add(ele);
-	sel.style.display = "inline";
-	}
+	sel.style.display = "inline"; 
+	} }, 500);
 	document.getElementById("register").style.display = "inline";
 //End Class Description Build
 //Add Class Build
