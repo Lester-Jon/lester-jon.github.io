@@ -354,17 +354,26 @@ function begin() {
 			var pass = 0;
 			for (var i = 0; i < (temp.length); i++) {
 				if (temp[i] == document.getElementById("remselect").value ){
-					document.getElementById("remp").innerHTML = " You have succesfull removed: </br>" + temp[i];
+					document.getElementById("remp").innerHTML = " You have succesfully removed: </br>" + temp[i];
 					temp.splice(i, 1);
 					document.getElementById("rem").style.animationName = "success";
 					setTimeout(function(){document.getElementById("rem").style.animationName = ""; }, 500);
-					document.getElementById("info").style.animationName = "rotate";
+					setTimeout(function(){document.getElementById("info").scrollIntoView(true); }, 300);
+					setTimeout(function(){document.getElementById("info").style.animationName = "rotate"; }, 300);
 					setTimeout(function(){document.getElementById("info").style.animationName = "" }, 500);
-					document.getElementById("info").scrollIntoView(true);
 					localStorage.classes =  JSON.stringify(temp);
+					
+					var total = document.getElementById("classes");
+					for (var j = 0; j < document.getElementsByTagName("LI").length; j++){
+						if (document.getElementById("remselect").value == document.getElementById("classes").childNodes[j].innerHTML){
+						total.removeChild(total.childNodes[j]);
+						}
+					}
+					
 					pass = 1;
 				}
 			}
+			
 			if (pass == 0) {
 				document.getElementById("remp").innerHTML = " Your are not registered for: </br>" + document.getElementById("remselect").value;
 				document.getElementById("rem").style.animationName = "failure";
