@@ -1,43 +1,388 @@
 <!DOCTYPE html>
 <html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+    font-family: "Open Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, sans-serif ;
+}
+h1 {
+    background-color: #056cb6 ;
+    color: white ;
+	text-align: center ;
+    }
+
+.student {
+	transition-timing-function: ease-in;
+	background-color: #056cb6 ;
+    color: white ;
+	-webkit-transition: .75s;
+    -moz-transition: .75s;
+    -ms-transition: .75s;
+    -o-transition: .75s;
+    transition: .75s;
+	animation-duration: .3s;
+	animation-iteration-count: 1;
+    }
+	
+.desc {
+	transition-timing-function: ease-in;
+	-webkit-transition: .75s;
+    -moz-transition: .75s;
+    -ms-transition: .75s;
+    -o-transition: .75s;
+    transition: .75s;
+	border-style: solid;
+	bord-width: 5px;
+	animation-duration: .3s;
+	animation-iteration-count: 1;
+	margin-bottom: 8px;
+    }		
+
+input {
+	position: relative;
+}
+
+.secHeader {
+	background-color: #056cb6 ;
+    color: white ;
+	text-align: center;
+	margin-top: -3px;
+	margin-bottom: 0px;
+	margin-left: -3px;
+	margin-right: -3px;
+}
+
+#desch4 {
+	background-color: #056cb6 ;
+    color: white ;
+	margin-top: 0px;
+	text-align: center;
+	margin-bottom: 4px;
+	margin-left: -3px;
+	margin-right: -3px;
+}
+
+#selclass {
+	text-align: center;
+}
+
+#select {
+	display: none;
+}
+
+#selclassp {
+	margin-bottom: 0px;
+}
+
+@-webkit-keyframes success {
+    0% {background-color: white;}
+    50% {background-color: green;}
+	100% {background-color: white;}
+}
+@keyframes success {
+    0% {background-color: white;}
+    50% {background-color: green;}
+	100% {background-color: white;}
+}
+
+@-webkit-keyframes failure {
+    0% {background-color: white;}
+    50% {background-color: red;}
+	100% {background-color: white;}
+}
+@keyframes failure {
+    0% {background-color: white;}
+    50% {background-color: red;}
+	100% {background-color: white;}
+}
+
+#addselect {
+	display: none;
+}
+
+#register {
+	display: none;
+}
+
+#addclass {
+	text-align: center;
+}
+#addp {
+	text-align: center;
+	margin-bottom: 0px;
+}
+
+#remselect {
+	display: none;
+}
+
+#remove {
+	display: none;
+}
+
+@-webkit-keyframes rotate {
+	50% {transform: rotateY(360deg);}
+}
+@keyframes rotate {
+	50% {transform: rotateY(360deg);}
+}
+
+#remclass {
+	text-align: center;
+}
+
+#remp {
+	text-align: center;
+	margin-bottom: 0px;
+}
+</style>
+</head>
 <body>
 
-<h2>Welcome User!</h2></br>
-<h1>Registered Classes</h1></br>
+<h1 id="header">Welcome to Mobile Student Scheduling</h1>
 
-<ul id="classes"><li>CIT260</li><li>CIT361</li></ul></br>
-<div id="result"></div></br>
-<form>
-Register for Class: <br>
-<input type="text" id="reg"><br>
-<input type="button" value="Register" onclick="register()">
-</form>
-<form>
-Remove Class: <br>
-<input type="text" id="rem"><br>
-<input type="button" value="Remove" onclick="remove()">
-</form></br>
+<div id="info">
+<p id="student"></p>
+<ul id="classes"></ul>
+</div>
+
+<div id="desc">
+<h2 id="desch2"></h2>
+<h4 id="desch4"></h4>
+<p id="descp" ontouchstart="loadDesc()"></p>
+<div id="selclass">
+<h5 id="selclassp"></h5>
+<select id="select">
+</select>
+</div>
+</div>
+
+<div id="add">
+<h2 id="addh2"></h2>
+<p id="addp"></p>
+<div id="addclass">
+<h5 id="addclassp"></h5>
+<select id="addselect">
+</select>
+<br><input id="register" type="button" value="Click Here to Register" onclick="addClass()"/>
+</div>
+</div>
+
+<div id="rem">
+<h2 id="remh2"></h2>
+<p id="remp"></p>
+<div id="remclass">
+<h5 id="remclassp"></h5>
+<select id="remselect">
+</select>
+<br><input id="remove" type="button" value="Click Here to Remove" onclick="remClass()"/>
+</div>
+</div>
+
+<div style="text-align:center;">
+<div id="userdiv">Enter Username: <input type="text" id="user"><br></div>
+<input id="start" type="button" value="Click Here to Begin" onclick="begin()" />
+</div>
+
 <script>
-function register() {
+
+
+function begin() {
+//localStorage Variables
+	localStorage.user = document.getElementById("user").value;
+	localStorage.classes = JSON.stringify(["CIT 261","CIT 360"]) ;
+	
+	//AJAX request for class description info to local storage
+	var request = new XMLHttpRequest();
+	request.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200){
+			localStorage.classinfo = (this.responseText);
+		}
+	};
+	request.open("GET", "classes.txt", true);
+	request.send();
+	
+	//AJAX request for classes taken info to local storage
+	var request2 = new XMLHttpRequest();
+	request2.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200){
+			localStorage.taken = (this.responseText);
+		}
+	};
+	request2.open("GET", "taken.txt", true);
+	request2.send();
+	
+//Delete Objects Unused from Here"
+	var del = document.getElementById("start");
+	del.parentNode.removeChild(del);
+	var del1 = document.getElementById("userdiv");
+	del1.parentNode.removeChild(del1);
+//End Delete unused Objects
+	
+//Student Info Build
+	document.getElementById("student").innerHTML = "Welcome Student " + localStorage.user + "!<br>   You are currently Registered for:"; 
+	document.getElementById("info").classList.add("student");
+	
+	
+	for (var i = 0; i < JSON.parse(localStorage.classes).length; i++){
 	var ele = document.createElement("LI");
-	var code = document.createTextNode(document.getElementById("reg").value);
+	var code = document.createTextNode(JSON.parse(localStorage.classes)[i]);
 	ele.appendChild(code);
 	document.getElementById("classes").appendChild(ele);
-	document.getElementById("result").innerHTML = "Add Successful!";
+	}
+//End Student Info Build
+	
+//Class Description Build
+	document.getElementById("desc").classList.add("desc");
+	document.getElementById("desch2").classList.add("secHeader");
+	document.getElementById("desch2").innerHTML = "Class Descriptions";
+	document.getElementById("desch4").innerHTML = "Class: NOT CHOSEN";
+	document.getElementById("descp").innerHTML = "Tap here to load description of your selected class";
+	
+	document.getElementById("selclassp").innerHTML = "Select the class you wish to preview";
+	//Set timeout because localstorage variable wasn't fully initialized by the time we attempted to run this
+	setTimeout(function(){ for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
+	var sel = document.getElementById("select");
+	var ele = document.createElement("option");
+	ele.text = JSON.parse(localStorage.classinfo)[i].classid;
+	ele.value = JSON.parse(localStorage.classinfo)[i].classid;
+	sel.add(ele);
+	sel.style.display = "inline"; 
+	} }, 50);
+	document.getElementById("register").style.display = "inline";
+//End Class Description Build
+//Add Class Build
+	document.getElementById("add").classList.add("desc");
+	document.getElementById("addh2").classList.add("secHeader");
+	document.getElementById("addh2").innerHTML = "Register for a Class";
+	document.getElementById("addclassp").innerHTML = "Select the class you wish to add";
+	for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
+	var sel = document.getElementById("addselect");
+	var ele = document.createElement("option");
+	ele.text = JSON.parse(localStorage.classinfo)[i].classid;
+	ele.value = JSON.parse(localStorage.classinfo)[i].classid;
+	sel.add(ele);
+	sel.style.display = "inline";
+	}
+	document.getElementById("register").style.display = "inline";
+//End Class Build
+
+	document.getElementById("rem").classList.add("desc");
+	document.getElementById("remh2").classList.add("secHeader");
+	document.getElementById("remh2").innerHTML = "Drop a Class";
+	document.getElementById("remclassp").innerHTML = "Select the class you wish to remove";
+	for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
+	var sel = document.getElementById("remselect");
+	var ele = document.createElement("option");
+	ele.text = JSON.parse(localStorage.classinfo)[i].classid;
+	ele.value = JSON.parse(localStorage.classinfo)[i].classid;
+	sel.add(ele);
+	sel.style.display = "inline";
+	}
+	document.getElementById("remove").style.display = "inline";
+	return false;
 }
 
-function remove() {
-	var total = document.getElementById("classes");
-	var i;
-	for (i = 0; i < document.getElementsByTagName("LI").length; i++){
-		if (document.getElementById("rem").value == document.getElementById("classes").childNodes[i].innerHTML){
-			total.removeChild(total.childNodes[i]);
-			document.getElementById("result").innerHTML = "Remove Successful!";
+//Class Description Loader
+	function loadDesc(){
+	if (localStorage.lastDesc != document.getElementById("select").value) {
+		for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
+			if ( document.getElementById("select").value == JSON.parse(localStorage.classinfo)[i].classid ) {
+				document.getElementById("desch4").innerHTML = "Class: " + JSON.parse(localStorage.classinfo)[i].classid + " - " + JSON.parse(localStorage.classinfo)[i].title;
+				document.getElementById("descp").innerHTML = JSON.parse(localStorage.classinfo)[i].description + " </br> Tap again to Load a New Class Description";
+				document.getElementById("desc").style.animationName = "success";
+				setTimeout(function(){document.getElementById("desc").style.animationName = ""; }, 500);
+		break;
+			}
+		}
+	}
+	//Variable to prevent the looping of animation
+	localStorage.lastDesc = document.getElementById("select").value;
+}
+//End Class Description Loader
+
+//Class Registerer
+	function addClass() {
+		var failure = 0;
+	//Check for Retakes
+		for (var i = 0; i < (JSON.parse(localStorage.taken).length); i++){
+			if ( document.getElementById("addselect").value == JSON.parse(localStorage.taken)[i]) {
+				document.getElementById("add").style.animationName = "failure";
+				setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
+				document.getElementById("addp").innerHTML = "You have already taken </br>" + document.getElementById("addselect").value;
+				failure = 1;
+				break;
+			}
+		}
+	//End check for retakes
+	//Checks for already registered
+		for (var i = 0; i < (JSON.parse(localStorage.classes).length); i++){
+			if ( document.getElementById("addselect").value == JSON.parse(localStorage.classes)[i]) {
+				document.getElementById("add").style.animationName = "failure";
+				setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
+				document.getElementById("addp").innerHTML = "You are already registered for: </br> " + document.getElementById("addselect").value;
+				failure = 1;
+				break;
+			}
 		}
 
+	//Successful code
+		if (failure == 0) {				
+			document.getElementById("addp").innerHTML = "You have successfully registered for: </br> " + document.getElementById("addselect").value + " </br> Feel Free to Add Another Class";
+			//Add to List at top of web page
+			var ele = document.createElement("LI");
+			var code = document.createTextNode(document.getElementById("addselect").value);
+			ele.appendChild(code);
+			document.getElementById("classes").appendChild(ele);
+			//Add to localStorage
+			var temp = JSON.parse(localStorage.classes);
+			temp.push(document.getElementById("addselect").value);
+			localStorage.classes =  JSON.stringify(temp);
+			//Animation
+			document.getElementById("add").style.animationName = "success";
+			setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
+			//Transform Student
+			document.getElementById("info").style.animationName = "rotate";
+			setTimeout(function(){document.getElementById("info").style.animationName = "" }, 500);		
+		}
+	}	
+//End Class Registerer
+//Class Remover
+	function remClass() {
+	 		var temp = JSON.parse(localStorage.classes);
+			var pass = 0;
+			for (var i = 0; i < (temp.length); i++) {
+				if (temp[i] == document.getElementById("remselect").value ){
+					document.getElementById("remp").innerHTML = " You have succesfull removed: </br>" + temp[i];
+					temp.splice(i, 1);
+					document.getElementById("rem").style.animationName = "success";
+					setTimeout(function(){document.getElementById("rem").style.animationName = ""; }, 500);
+					setTimeout(function(){document.getElementById("info").scrollIntoView(true); }, 100);
+					setTimeout(function(){document.getElementById("info").style.animationName = "rotate"; }, 100);
+					setTimeout(function(){document.getElementById("info").style.animationName = "" }, 500);
+					localStorage.classes =  JSON.stringify(temp);
+					
+					var total = document.getElementById("classes");
+					for (var j = 0; i < document.getElementsByTagName("LI").length; j++){
+						if (document.getElementById("remselect").value == document.getElementById("classes").childNodes[i].innerHTML){
+						total.removeChild(total.childNodes[i]);
+						}
+					}
+					
+					pass = 1;
+				}
+			}
+			
+			if (pass == 0) {
+				document.getElementById("remp").innerHTML = " Your are not registered for: </br>" + document.getElementById("remselect").value;
+				document.getElementById("rem").style.animationName = "failure";
+				setTimeout(function(){document.getElementById("rem").style.animationName = ""; }, 500);		
+			}
 	}
-}
 
+
+//End Class Remover
 </script>
 </body>
 </html>
