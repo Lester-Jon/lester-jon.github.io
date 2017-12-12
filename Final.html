@@ -132,6 +132,10 @@ input {
 	text-align: center;
 }
 
+#remp {
+	text-align: center;
+	margin-bottom: 0px;
+}
 </style>
 </head>
 <body>
@@ -356,7 +360,7 @@ function begin() {
 					setTimeout(function(){document.getElementById("rem").style.animationName = ""; }, 500);
 					document.getElementById("info").style.animationName = "rotate";
 					setTimeout(function(){document.getElementById("info").style.animationName = "" }, 500);
-					document.getElementById("info").focus();
+					document.getElementById("info").scrollIntoView(true);
 					localStorage.classes =  JSON.stringify(temp);
 					pass = 1;
 				}
