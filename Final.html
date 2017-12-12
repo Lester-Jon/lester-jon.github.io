@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -253,6 +254,19 @@ function begin() {
 	document.getElementById("register").style.display = "inline";
 //End Class Build
 
+	document.getElementById("rem").classList.add("desc");
+	document.getElementById("remh2").classList.add("secHeader");
+	document.getElementById("remh2").innerHTML = "Drop a Class";
+	document.getElementById("remclassp").innerHTML = "Select the class you wish to remove";
+	for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
+	var sel = document.getElementById("remselect");
+	var ele = document.createElement("option");
+	ele.text = JSON.parse(localStorage.classinfo)[i].classid;
+	ele.value = JSON.parse(localStorage.classinfo)[i].classid;
+	sel.add(ele);
+	sel.style.display = "inline";
+	}
+	document.getElementById("remove").style.display = "inline";
 	return false;
 }
 
@@ -322,7 +336,24 @@ function begin() {
 //End Class Registerer
 //Class Remover
 	function remClass() {
-	
+	 		var temp = JSON.parse(localStorage.classes);
+			var pass = 0;
+			for (var i = 0; i < (temp.length); i++) {
+				if (temp[i] == document.getElementById("remselet").value ){
+					document.getElementById("remp").innerHTML = " You have succesfull removed: </br>" + temp[i];
+					temp.splice(i, 1);
+					document.getElementById("rem").style.animationName = "success";
+					setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
+					document.getElementById("info").style.animationName = "rotate";
+					setTimeout(function(){document.getElementById("info").style.animationName = "" }, 500);
+					pass = 1;
+				}
+			}
+			if (pass == 1) {
+				document.getElementById("remp").innerHTML = " Your are not registered for: </br>" + document.getElementById("remselet").value;
+				document.getElementById("add").style.animationName = "failure";
+				setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);		
+			}
 	}
 
 
