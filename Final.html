@@ -353,16 +353,18 @@ function begin() {
 					document.getElementById("remp").innerHTML = " You have succesfull removed: </br>" + temp[i];
 					temp.splice(i, 1);
 					document.getElementById("rem").style.animationName = "success";
-					setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);
+					setTimeout(function(){document.getElementById("rem").style.animationName = ""; }, 500);
 					document.getElementById("info").style.animationName = "rotate";
 					setTimeout(function(){document.getElementById("info").style.animationName = "" }, 500);
+					document.getElementById("info").focus();
+					localStorage.classes =  JSON.stringify(temp);
 					pass = 1;
 				}
 			}
-			if (pass == 1) {
+			if (pass == 0) {
 				document.getElementById("remp").innerHTML = " Your are not registered for: </br>" + document.getElementById("remselect").value;
-				document.getElementById("add").style.animationName = "failure";
-				setTimeout(function(){document.getElementById("add").style.animationName = ""; }, 500);		
+				document.getElementById("rem").style.animationName = "failure";
+				setTimeout(function(){document.getElementById("rem").style.animationName = ""; }, 500);		
 			}
 	}
 
