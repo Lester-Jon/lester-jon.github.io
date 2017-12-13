@@ -160,23 +160,21 @@ input {
 
 <div id="add">
 <h2 id="addh2"></h2>
-<p id="addp"></p>
+<p id="addp" ontouchstart="addClass()"></p>
 <div id="addclass">
 <h5 id="addclassp"></h5>
 <select id="addselect">
 </select>
-<br><input id="register" type="button" value="Click Here to Register" onclick="addClass()"/>
 </div>
 </div>
 
 <div id="rem">
 <h2 id="remh2"></h2>
-<p id="remp"></p>
+<p id="remp" ontouchstart="remClass()"></p>
 <div id="remclass">
 <h5 id="remclassp"></h5>
 <select id="remselect">
 </select>
-<br><input id="remove" type="button" value="Click Here to Remove" onclick="remClass()"/>
 </div>
 </div>
 
@@ -250,13 +248,12 @@ function begin() {
 	sel.add(ele);
 	sel.style.display = "inline"; 
 	} }, 50);
-	document.getElementById("register").style.display = "inline";
 //End Class Description Build
 //Add Class Build
 	document.getElementById("add").classList.add("desc");
 	document.getElementById("addh2").classList.add("secHeader");
 	document.getElementById("addh2").innerHTML = "Register for a Class";
-	document.getElementById("addclassp").innerHTML = "Select the class you wish to add";
+	document.getElementById("addclassp").innerHTML = "Tap to Add the selected class";
 	for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
 	var sel = document.getElementById("addselect");
 	var ele = document.createElement("option");
@@ -265,13 +262,12 @@ function begin() {
 	sel.add(ele);
 	sel.style.display = "inline";
 	}
-	document.getElementById("register").style.display = "inline";
 //End Class Build
 
 	document.getElementById("rem").classList.add("desc");
 	document.getElementById("remh2").classList.add("secHeader");
 	document.getElementById("remh2").innerHTML = "Drop a Class";
-	document.getElementById("remclassp").innerHTML = "Select the class you wish to remove";
+	document.getElementById("remclassp").innerHTML = "Tap to remove the selected class";
 	for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
 	var sel = document.getElementById("remselect");
 	var ele = document.createElement("option");
@@ -280,7 +276,6 @@ function begin() {
 	sel.add(ele);
 	sel.style.display = "inline";
 	}
-	document.getElementById("remove").style.display = "inline";
 	return false;
 }
 
