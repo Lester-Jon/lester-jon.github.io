@@ -358,7 +358,7 @@ function begin() {
 					temp.splice(i, 1);
 					document.getElementById("rem").style.animationName = "success";
 					setTimeout(function(){document.getElementById("rem").style.animationName = ""; }, 500);
-					setTimeout(function(){document.getElementById("info").scrollIntoView(true); }, 300);
+					setTimeout(function(){document.getElementById("info").scrollIntoView({behavior: "smooth"}); }, 300);
 					setTimeout(function(){document.getElementById("info").style.animationName = "rotate"; }, 300);
 					setTimeout(function(){document.getElementById("info").style.animationName = "" }, 500);
 					localStorage.classes =  JSON.stringify(temp);
