@@ -253,7 +253,7 @@ function begin() {
 	document.getElementById("add").classList.add("desc");
 	document.getElementById("addh2").classList.add("secHeader");
 	document.getElementById("addh2").innerHTML = "Register for a Class";
-	document.getElementById("addclassp").innerHTML = "Tap to Add the selected class";
+	document.getElementById("addp").innerHTML = "Tap to Add the selected class";
 	for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
 	var sel = document.getElementById("addselect");
 	var ele = document.createElement("option");
@@ -267,7 +267,7 @@ function begin() {
 	document.getElementById("rem").classList.add("desc");
 	document.getElementById("remh2").classList.add("secHeader");
 	document.getElementById("remh2").innerHTML = "Drop a Class";
-	document.getElementById("remclassp").innerHTML = "Tap to remove the selected class";
+	document.getElementById("remp").innerHTML = "Tap to remove the selected class";
 	for (var i = 0; i < (JSON.parse(localStorage.classinfo).length); i++){
 	var sel = document.getElementById("remselect");
 	var ele = document.createElement("option");
